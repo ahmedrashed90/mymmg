@@ -8,7 +8,7 @@
         body {
             font-family: Arial, sans-serif;
             margin: 20px;
-            direction: rtl; /* لجعل النص من اليمين لليسار */
+            direction: rtl;
         }
         label {
             margin-top: 10px;
@@ -20,6 +20,19 @@
         }
         .meal-selection {
             margin-bottom: 20px;
+        }
+        select, input {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+        }
+        button {
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            width: 100%;
         }
     </style>
 </head>
@@ -50,7 +63,7 @@
                 <option value="راب كباب لحم">راب كباب لحم</option>
                 <option value="راب كباب دجاج">راب كباب دجاج</option>
             </select>
-            <textarea id="note-saturday" placeholder="ملاحظات للسبت"></textarea>
+            <textarea id="note-saturday" placeholder="ملاحظات السبت"></textarea>
 
             <label for="sunday">الأحد:</label>
             <select id="sunday" multiple>
@@ -59,7 +72,9 @@
                 <option value="راب كباب لحم">راب كباب لحم</option>
                 <option value="راب كباب دجاج">راب كباب دجاج</option>
             </select>
-            <textarea id="note-sunday" placeholder="ملاحظات للأحد"></textarea>
+            <textarea id="note-sunday" placeholder="ملاحظات الأحد"></textarea>
+
+            <!-- تكرار بقية الأيام من الاثنين إلى الخميس بنفس الشكل -->
 
             <label for="monday">الاثنين:</label>
             <select id="monday" multiple>
@@ -68,7 +83,7 @@
                 <option value="راب كباب لحم">راب كباب لحم</option>
                 <option value="راب كباب دجاج">راب كباب دجاج</option>
             </select>
-            <textarea id="note-monday" placeholder="ملاحظات للإثنين"></textarea>
+            <textarea id="note-monday" placeholder="ملاحظات الاثنين"></textarea>
 
             <label for="tuesday">الثلاثاء:</label>
             <select id="tuesday" multiple>
@@ -86,7 +101,7 @@
                 <option value="راب كباب لحم">راب كباب لحم</option>
                 <option value="راب كباب دجاج">راب كباب دجاج</option>
             </select>
-            <textarea id="note-wednesday" placeholder="ملاحظات للأربعاء"></textarea>
+            <textarea id="note-wednesday" placeholder="ملاحظات الأربعاء"></textarea>
 
             <label for="thursday">الخميس:</label>
             <select id="thursday" multiple>
@@ -99,7 +114,7 @@
         </div>
     </div>
 
-    <button type="button" onclick="submitForm()">إرسال الطلب</button>
+    <button type="button" onclick="submitForm()">إرسال الطلب عبر واتساب</button>
 </form>
 
 <script>
@@ -138,10 +153,10 @@
             اسم العميل: ${clientName}
             نوع الاشتراك: ${subscription}
             الوجبات:
-            ${Object.entries(meals).map(([day, {meal, note}]) => `${day}: ${meal.join(", ")} \n  ملاحظات: ${note}`).join("\n")}
+            ${Object.entries(meals).map(([day, {meal, note}]) => `${day}: ${meal.join(", ")} \n ملاحظات: ${note}`).join("\n")}
         `;
 
-        const whatsappNumber = "+966508821819";
+        const whatsappNumber = "+966506137065";
         const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
 
         window.open(whatsappUrl);
